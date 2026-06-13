@@ -21,18 +21,23 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; /* width/height include padding & border */
+  box-sizing: border-box;
+  /* width/height include padding & border */
 }
 
 /* Set a comfortable base font for the whole page */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  min-height: 100vh;       /* fill the whole viewport height */
+  background: linear-gradient(135deg, #adbbf7 0%, #b47aee 100%);
+  min-height: 100vh;
+  /* fill the whole viewport height */
   display: flex;
-  align-items: center;     /* vertically center the card */
-  justify-content: center; /* horizontally center the card */
-  padding: 20px;           /* breathing room on small screens */
+  align-items: center;
+  /* vertically center the card */
+  justify-content: center;
+  /* horizontally center the card */
+  padding: 20px;
+  /* breathing room on small screens */
 }
 
 /* ── 2. CSS Custom Properties (Design Tokens) ───────────────
@@ -40,19 +45,32 @@ body {
    update the whole app's color scheme.
 ──────────────────────────────────────────────────────────── */
 :root {
-  --color-primary: #667eea;         /* blue-purple (button, accents) */
-  --color-primary-dark: #5a67d8;    /* darker shade for hover states */
-  --color-success-bg: #d4edda;      /* light green background */
-  --color-success-text: #155724;    /* dark green text */
-  --color-success-border: #c3e6cb;  /* green border */
-  --color-error-bg: #f8d7da;        /* light red background */
-  --color-error-text: #721c24;      /* dark red text */
-  --color-error-border: #f5c6cb;    /* red border */
-  --color-label: #4a5568;           /* grey label text */
-  --color-input-border: #e2e8f0;    /* light grey input border */
-  --color-input-focus: #667eea;     /* blue border when input is focused */
-  --radius: 12px;                   /* standard border radius */
-  --shadow: 0 20px 60px rgba(0,0,0,0.2); /* card drop shadow */
+  --color-primary: #667eea;
+  /* blue-purple (button, accents) */
+  --color-primary-dark: #5a67d8;
+  /* darker shade for hover states */
+  --color-success-bg: #d4edda;
+  /* light green background */
+  --color-success-text: #155724;
+  /* dark green text */
+  --color-success-border: #c3e6cb;
+  /* green border */
+  --color-error-bg: #f8d7da;
+  /* light red background */
+  --color-error-text: #721c24;
+  /* dark red text */
+  --color-error-border: #f5c6cb;
+  /* red border */
+  --color-label: #4a5568;
+  /* grey label text */
+  --color-input-border: #e2e8f0;
+  /* light grey input border */
+  --color-input-focus: #667eea;
+  /* blue border when input is focused */
+  --radius: 12px;
+  /* standard border radius */
+  --shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  /* card drop shadow */
 }
 
 /* ── 3. Layout Wrapper ───────────────────────────────────── */
@@ -71,9 +89,12 @@ body {
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   width: 100%;
-  max-width: 480px;           /* don't let it get too wide on large screens */
-  overflow: hidden;           /* clip the header's rounded corners */
-  animation: slideUp 0.5s ease-out; /* entrance animation */
+  max-width: 480px;
+  /* don't let it get too wide on large screens */
+  overflow: hidden;
+  /* clip the header's rounded corners */
+  animation: slideUp 0.5s ease-out;
+  /* entrance animation */
 }
 
 /* ── 5. Card Header ──────────────────────────────────────── */
@@ -86,10 +107,12 @@ body {
 }
 
 .header-icon {
-  font-size: 2.5rem;        /* big graduation cap emoji */
+  font-size: 2.5rem;
+  /* big graduation cap emoji */
   margin-bottom: 12px;
   display: block;
-  animation: bounce 1s ease-in-out infinite alternate; /* subtle bounce */
+  animation: bounce 1s ease-in-out infinite alternate;
+  /* subtle bounce */
 }
 
 .card-title {
@@ -101,7 +124,8 @@ body {
 
 .card-subtitle {
   font-size: 0.9rem;
-  opacity: 0.85;             /* slightly transparent white */
+  opacity: 0.85;
+  /* slightly transparent white */
 }
 
 /* ── 6. Alert Messages ───────────────────────────────────── */
@@ -112,7 +136,8 @@ body {
   border-radius: 8px;
   font-size: 0.9rem;
   font-weight: 500;
-  animation: fadeIn 0.3s ease; /* smooth appearance */
+  animation: fadeIn 0.3s ease;
+  /* smooth appearance */
 }
 
 /* Success alert — green */
@@ -136,12 +161,14 @@ body {
 
 /* Wrapper for each label + input pair */
 .form-group {
-  margin-bottom: 20px; /* vertical spacing between fields */
+  margin-bottom: 20px;
+  /* vertical spacing between fields */
 }
 
 /* Label text above each input */
 .form-label {
-  display: block;          /* sits on its own line above the input */
+  display: block;
+  /* sits on its own line above the input */
   font-size: 0.875rem;
   font-weight: 600;
   color: var(--color-label);
@@ -151,21 +178,27 @@ body {
 /* Shared styles for both <input> and <textarea> */
 .form-input,
 .form-textarea {
-  width: 100%;             /* fill the available width */
+  width: 100%;
+  /* fill the available width */
   padding: 12px 14px;
   border: 1.5px solid var(--color-input-border);
   border-radius: 8px;
   font-size: 1rem;
-  font-family: inherit;    /* use the same font as the rest of the page */
+  font-family: inherit;
+  /* use the same font as the rest of the page */
   color: #2d3748;
-  background: #f8fafc;     /* very light grey background */
-  transition: border-color 0.2s ease, box-shadow 0.2s ease; /* smooth focus animation */
-  outline: none;           /* remove default browser outline */
+  background: #f8fafc;
+  /* very light grey background */
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  /* smooth focus animation */
+  outline: none;
+  /* remove default browser outline */
 }
 
 /* Make the textarea not resizable horizontally */
 .form-textarea {
-  resize: vertical;        /* user can resize vertically only */
+  resize: vertical;
+  /* user can resize vertically only */
   min-height: 100px;
 }
 
@@ -185,7 +218,8 @@ body {
 
 /* ── 8. Submit Button ────────────────────────────────────── */
 .submit-btn {
-  width: 100%;             /* stretch across the full card width */
+  width: 100%;
+  /* stretch across the full card width */
   padding: 14px;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
@@ -193,7 +227,8 @@ body {
   border-radius: 8px;
   font-size: 1rem;
   font-weight: 600;
-  cursor: pointer;         /* show hand cursor on hover */
+  cursor: pointer;
+  /* show hand cursor on hover */
   transition: transform 0.15s ease, box-shadow 0.15s ease;
   margin-top: 8px;
 }
@@ -223,6 +258,7 @@ body {
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -231,14 +267,26 @@ body {
 
 /* Alert fades in when it appears */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-6px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Icon bounces gently */
 @keyframes bounce {
-  from { transform: translateY(0); }
-  to   { transform: translateY(-6px); }
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-6px);
+  }
 }
 
 /* ── Responsive Design ───────────────────────────────────── */
@@ -247,6 +295,7 @@ body {
   .card-header {
     padding: 24px 20px 20px;
   }
+
   .feedback-form {
     padding: 20px 20px 28px;
   }
