@@ -1,0 +1,253 @@
+/* ============================================================
+   index.css — Global Stylesheet
+   ============================================================
+   This file applies styles to the ENTIRE application.
+   It is imported once in main.jsx and affects all components.
+
+   Structure:
+   1. CSS Reset & Base
+   2. CSS Variables (design tokens)
+   3. Layout / Page wrapper
+   4. Card (the white box holding the form)
+   5. Card Header
+   6. Alert Messages (success & error)
+   7. Form Elements (labels, inputs, textarea)
+   8. Submit Button
+   9. Animations
+   ============================================================ */
+
+/* ── 1. CSS Reset & Base ─────────────────────────────────── */
+/* Remove default browser margins and padding for consistency */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* width/height include padding & border */
+}
+
+/* Set a comfortable base font for the whole page */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;       /* fill the whole viewport height */
+  display: flex;
+  align-items: center;     /* vertically center the card */
+  justify-content: center; /* horizontally center the card */
+  padding: 20px;           /* breathing room on small screens */
+}
+
+/* ── 2. CSS Custom Properties (Design Tokens) ───────────────
+   Define colors once here — change them in one place to
+   update the whole app's color scheme.
+──────────────────────────────────────────────────────────── */
+:root {
+  --color-primary: #667eea;         /* blue-purple (button, accents) */
+  --color-primary-dark: #5a67d8;    /* darker shade for hover states */
+  --color-success-bg: #d4edda;      /* light green background */
+  --color-success-text: #155724;    /* dark green text */
+  --color-success-border: #c3e6cb;  /* green border */
+  --color-error-bg: #f8d7da;        /* light red background */
+  --color-error-text: #721c24;      /* dark red text */
+  --color-error-border: #f5c6cb;    /* red border */
+  --color-label: #4a5568;           /* grey label text */
+  --color-input-border: #e2e8f0;    /* light grey input border */
+  --color-input-focus: #667eea;     /* blue border when input is focused */
+  --radius: 12px;                   /* standard border radius */
+  --shadow: 0 20px 60px rgba(0,0,0,0.2); /* card drop shadow */
+}
+
+/* ── 3. Layout Wrapper ───────────────────────────────────── */
+/* The outermost div in App.jsx — centers the card on screen */
+.app-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ── 4. Card ─────────────────────────────────────────────── */
+/* The white rounded box that contains everything */
+.card {
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  width: 100%;
+  max-width: 480px;           /* don't let it get too wide on large screens */
+  overflow: hidden;           /* clip the header's rounded corners */
+  animation: slideUp 0.5s ease-out; /* entrance animation */
+}
+
+/* ── 5. Card Header ──────────────────────────────────────── */
+/* The colored top section with the title */
+.card-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 32px 32px 28px;
+  text-align: center;
+}
+
+.header-icon {
+  font-size: 2.5rem;        /* big graduation cap emoji */
+  margin-bottom: 12px;
+  display: block;
+  animation: bounce 1s ease-in-out infinite alternate; /* subtle bounce */
+}
+
+.card-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  letter-spacing: -0.5px;
+}
+
+.card-subtitle {
+  font-size: 0.9rem;
+  opacity: 0.85;             /* slightly transparent white */
+}
+
+/* ── 6. Alert Messages ───────────────────────────────────── */
+/* Base style for both success and error alerts */
+.alert {
+  margin: 20px 24px 0;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  animation: fadeIn 0.3s ease; /* smooth appearance */
+}
+
+/* Success alert — green */
+.alert-success {
+  background-color: var(--color-success-bg);
+  color: var(--color-success-text);
+  border: 1px solid var(--color-success-border);
+}
+
+/* Error alert — red */
+.alert-error {
+  background-color: var(--color-error-bg);
+  color: var(--color-error-text);
+  border: 1px solid var(--color-error-border);
+}
+
+/* ── 7. Form ─────────────────────────────────────────────── */
+.feedback-form {
+  padding: 24px 32px 32px;
+}
+
+/* Wrapper for each label + input pair */
+.form-group {
+  margin-bottom: 20px; /* vertical spacing between fields */
+}
+
+/* Label text above each input */
+.form-label {
+  display: block;          /* sits on its own line above the input */
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-label);
+  margin-bottom: 6px;
+}
+
+/* Shared styles for both <input> and <textarea> */
+.form-input,
+.form-textarea {
+  width: 100%;             /* fill the available width */
+  padding: 12px 14px;
+  border: 1.5px solid var(--color-input-border);
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;    /* use the same font as the rest of the page */
+  color: #2d3748;
+  background: #f8fafc;     /* very light grey background */
+  transition: border-color 0.2s ease, box-shadow 0.2s ease; /* smooth focus animation */
+  outline: none;           /* remove default browser outline */
+}
+
+/* Make the textarea not resizable horizontally */
+.form-textarea {
+  resize: vertical;        /* user can resize vertically only */
+  min-height: 100px;
+}
+
+/* Blue border + soft glow when user clicks inside an input */
+.form-input:focus,
+.form-textarea:focus {
+  border-color: var(--color-input-focus);
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15);
+  background: white;
+}
+
+/* Placeholder text color */
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: #a0aec0;
+}
+
+/* ── 8. Submit Button ────────────────────────────────────── */
+.submit-btn {
+  width: 100%;             /* stretch across the full card width */
+  padding: 14px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;         /* show hand cursor on hover */
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  margin-top: 8px;
+}
+
+/* Lift the button slightly on hover */
+.submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+/* Press effect when clicking */
+.submit-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+/* Grey out the button while the form is submitting */
+.submit-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* ── 9. Animations ───────────────────────────────────────── */
+
+/* Card slides up from below when page loads */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Alert fades in when it appears */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Icon bounces gently */
+@keyframes bounce {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-6px); }
+}
+
+/* ── Responsive Design ───────────────────────────────────── */
+/* On small screens, reduce padding inside the card */
+@media (max-width: 520px) {
+  .card-header {
+    padding: 24px 20px 20px;
+  }
+  .feedback-form {
+    padding: 20px 20px 28px;
+  }
+}
