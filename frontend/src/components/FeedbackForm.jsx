@@ -169,7 +169,7 @@ function FeedbackForm() {
           className="submit-btn"
           disabled={isLoading}
         >
-          {isLoading ? '⏳ Submitting...' : '📨 Submit Feedback'}
+          {isLoading ? '⏳ Submitting...' : 'Submit Feedback'}
         </button>
 
       </form>
